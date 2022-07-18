@@ -14,6 +14,18 @@ services:
     ports:
       - "3000:3000"
 
+  nginx:
+    build: 
+      context: nginx
+      dockerfile: Dockerfile
+    container_name: nginx
+    networks:
+      - appnode-network
+    ports:
+      - "8080:80"
+    depends_on:
+      - app
+
 networks:
   appnode-network:
     driver: bridge
