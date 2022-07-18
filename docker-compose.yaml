@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  app:
+    build: 
+      context: node
+      dockerfile: Dockerfile
+    container_name: app
+    networks:
+      - appnode-network
+    volumes:
+      - ./node:/usr/src/app
+    tty: true
+    ports:
+      - "3000:3000"
+
+networks:
+  appnode-network:
+    driver: bridge
