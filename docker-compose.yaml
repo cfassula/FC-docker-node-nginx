@@ -26,6 +26,21 @@ services:
     depends_on:
       - app
 
+  db:
+    build: 
+      context: db
+      dockerfile: Dockerfile
+    container_name: db
+    restart: always
+    tty: true
+    volumes:
+      - ./db/mysql-data:/var/lib/mysql
+    environment:
+      - MYSQL_DATABASE=mydb
+      - MYSQL_ROOT_PASSWORD=root
+    networks:
+      - appnode-network
+
 networks:
   appnode-network:
     driver: bridge
