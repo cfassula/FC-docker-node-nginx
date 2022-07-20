@@ -6,7 +6,7 @@ RUN apt-get update && apt-get install -y wget
 
 COPY package*.json .
 
-RUN npm install --only=prod
+RUN npm install
 
 COPY ./index.js .
 
