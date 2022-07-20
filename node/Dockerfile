@@ -4,9 +4,9 @@ WORKDIR /usr/src/app
 
 RUN apt-get update && apt-get install -y wget
 
-COPY package*.json ./
+COPY package*.json .
 
-RUN npm install 
+RUN npm install --only=prod
 
 COPY ./index.js .
 
